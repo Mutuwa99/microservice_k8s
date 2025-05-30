@@ -5,11 +5,11 @@ metadata:
   namespace: {{ .Release.Namespace }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-# spec:
-#   tls:
-#     - hosts:
-#         - {{ .Values.ingress.host }}
-#       secretName: {{ .Release.Name }}
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: {{ .Release.Name }}
       
 
   rules:

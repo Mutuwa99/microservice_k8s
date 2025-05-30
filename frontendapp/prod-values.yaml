@@ -5,13 +5,13 @@ replicaCount: 2
 namespace: prod
 
 image:
-  repository: nginx
-  tag: latest
-  pullPolicy: IfNotPresent
+  repository: mutuwa12/frontendapp                 # Docker image repository (in this case, the official Nginx image)
+  tag: v1                       # Image tag/version to use (using 'latest' for dev environment)
+  pullPolicy: IfNotPresent          
 
 service:
   name: frontendapp-prod
-  type: ClusterIP
+  type: LoadBalancer
   targetPort: 80
   port: 80
 
