@@ -5,9 +5,9 @@ replicaCount: 2
 namespace: prod
 
 image:
-  repository: mutuwa12/frontendapp                 # Docker image repository (in this case, the official Nginx image)
-  tag: v1                       # Image tag/version to use (using 'latest' for dev environment)
-  pullPolicy: IfNotPresent          
+  repository: nginx
+  tag: latest
+  pullPolicy: IfNotPresent
 
 service:
   name: frontendapp-prod
