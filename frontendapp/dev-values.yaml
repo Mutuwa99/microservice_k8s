@@ -30,7 +30,7 @@ resources:
 
 ingress:
   enabled: true
-  host: noble.dev.com
+  host: noble.example.com
 
 certManager:
   issuerName: selfsigned
