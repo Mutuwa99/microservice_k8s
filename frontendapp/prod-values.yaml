@@ -30,6 +30,5 @@ resources:
 ingress:
   enabled: true
   host: noble-mutuwa.com
-
 certManager:
   issuerName: selfsigned
