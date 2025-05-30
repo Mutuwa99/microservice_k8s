@@ -5,12 +5,13 @@ replicaCount: 2
 namespace: prod
 
 image:
-  repository: mutuwa12/frontendapp                 # Docker image repository (in this case, the official Nginx image)
+  repository: mutuwa12/usermanagement                 # Docker image repository (in this case, the official Nginx image)
   tag: v1                       # Image tag/version to use (using 'latest' for dev environment)
   pullPolicy: IfNotPresent          # Policy for pulling images (Only pulls if not already present on node)
 
+
 service:
-  name: frontendapp-prod
+  name: usermanagement-prod
   type: LoadBalancer
   targetPort: 80
   port: 80
@@ -29,6 +30,6 @@ resources:
 
 ingress:
   enabled: true
-  host: noble-mutuwa.com
+  host: usermanagement-prod.com
 certManager:
   issuerName: selfsigned

@@ -1,21 +1,22 @@
 # values-dev.yaml
-replicaCount: 2
 
+namespace: dev                      # The Kubernetes namespace where the resources will be deployed
 
-namespace: prod
+replicaCount: 1                     # Number of pod replicas to run
+
+env: dev                            # Environment label (used for tagging pods, e.g., dev, staging, prod)
 
 image:
-  repository: mutuwa12/frontendapp                 # Docker image repository (in this case, the official Nginx image)
+  repository: mutuwa12/usermanagement                 # Docker image repository (in this case, the official Nginx image)
   tag: v1                       # Image tag/version to use (using 'latest' for dev environment)
   pullPolicy: IfNotPresent          # Policy for pulling images (Only pulls if not already present on node)
 
 service:
-  name: frontendapp-prod
+  name: usermanagement-dev
   type: LoadBalancer
   targetPort: 80
   port: 80
-
-env: prod
+                
 
 resources:
   limits:
@@ -24,11 +25,14 @@ resources:
 
   requests:
     cpu: "250m"                     # Minimum amount of CPU requested (used for scheduling)
-    memory: "128Mi"                 # Minimum memory requested (used for scheduling).
+    memory: "128Mi"                 # Minimum memory requested (used for scheduling)
 
 
 ingress:
   enabled: true
-  host: noble-mutuwa.com
+  host: usermanagement-dev.com
+
 certManager:
   issuerName: selfsigned
+
+
