@@ -1,0 +1,35 @@
+# values-dev.yaml
+replicaCount: 2
+
+
+namespace: prod
+
+image:
+  repository: nginx
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  name: frontendapp-prod
+  type: ClusterIP
+  targetPort: 80
+  port: 80
+
+env: prod
+
+resources:
+  limits:
+    cpu: "500m"                     # Maximum amount of CPU the container can use (500 millicores = 0.5 cores)
+    memory: "256Mi"                 # Maximum memory the container can use (256 MiB)
+
+  requests:
+    cpu: "250m"                     # Minimum amount of CPU requested (used for scheduling)
+    memory: "128Mi"                 # Minimum memory requested (used for scheduling).
+
+
+ingress:
+  enabled: true
+  host: noble.prod.com
+
+certManager:
+  issuerName: selfsigned
