@@ -13,7 +13,7 @@ image:
 service:
   name: usermanagement-prod
   type: LoadBalancer
-  targetPort: 80
+  targetPort: 8000
   port: 80
 
 env: prod
