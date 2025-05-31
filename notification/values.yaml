@@ -59,7 +59,7 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -105,3 +105,12 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+resources:
+  limits:
+    cpu: "500m"                     # Maximum amount of CPU the container can use (500 millicores = 0.5 cores)
+    memory: "256Mi"                 # Maximum memory the container can use (256 MiB)
+
+  requests:
+    cpu: "250m"                     # Minimum amount of CPU requested (used for scheduling)
+    memory: "128Mi"    
