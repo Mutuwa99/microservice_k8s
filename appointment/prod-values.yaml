@@ -30,6 +30,6 @@ resources:
 
 ingress:
   enabled: true
-  host: usermanagement-prod.com
+  host: appointment-prod.com
 certManager:
   issuerName: selfsigned

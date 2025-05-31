@@ -30,7 +30,7 @@ resources:
 
 ingress:
   enabled: true
-  host: usermanagement-dev.com
+  host: appointment-dev.com
 
 certManager:
   issuerName: selfsigned
