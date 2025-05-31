@@ -6,7 +6,7 @@ namespace: prod
 
 image:
   repository: mutuwa12/usermanagement                 # Docker image repository (in this case, the official Nginx image)
-  tag: v1                       # Image tag/version to use (using 'latest' for dev environment)
+  tag: v2                       # Image tag/version to use (using 'latest' for dev environment)
   pullPolicy: IfNotPresent          # Policy for pulling images (Only pulls if not already present on node)
 
 
