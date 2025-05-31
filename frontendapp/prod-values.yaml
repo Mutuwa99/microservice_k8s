@@ -19,12 +19,12 @@ env: prod
 
 resources:
   limits:
-    cpu: "100m"        # 0.1 cores
-    memory: "64Mi"     # 64 MiB
+    cpu: "200m"        #
+    memory: "128Mi"     # 
 
   requests:
-    cpu: "50m"         # 0.05 cores
-    memory: "32Mi"     # 32 MiB
+    cpu: "100m"         # 
+    memory: "64Mi"     # 
 
 
 ingress:
