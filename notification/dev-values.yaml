@@ -1,0 +1,38 @@
+# values-dev.yaml
+
+namespace: dev                      # The Kubernetes namespace where the resources will be deployed
+
+replicaCount: 1                     # Number of pod replicas to run
+
+env: dev                            # Environment label (used for tagging pods, e.g., dev, staging, prod)
+
+image:
+  repository: mutuwa12/notification                 # Docker image repository (in this case, the official Nginx image)
+  tag: v1                       # Image tag/version to use (using 'latest' for dev environment)
+  pullPolicy: IfNotPresent          # .6Policy for pulling images (Only pulls if not already present on node)
+
+service:
+  name: notification-dev
+  type: LoadBalancer
+  targetPort: 8000
+  port: 80
+                
+
+resources:
+  limits:
+    cpu: "500m"                     # Maximum amount of CPU the container can use (500 millicores = 0.5 cores)
+    memory: "256Mi"                 # Maximum memory the container can use (256 MiB)
+
+  requests:
+    cpu: "250m"                     # Minimum amount of CPU requested (used for scheduling)
+    memory: "128Mi"                 # Minimum memory requested (used for scheduling)
+
+
+ingress:
+  enabled: true
+  host: notification-dev.com
+
+certManager:
+  issuerName: selfsigned
+
+
