@@ -8,7 +8,7 @@ env: dev                            # Environment label (used for tagging pods, 
 
 image:
   repository: mutuwa12/usermanagement                 # Docker image repository (in this case, the official Nginx image)
-  tag: v3                       # Image tag/version to use (using 'latest' for dev environment)
+  tag: v4                       # Image tag/version to use (using 'latest' for dev environment)
   pullPolicy: IfNotPresent          # .6Policy for pulling images (Only pulls if not already present on node)
 
 service:
