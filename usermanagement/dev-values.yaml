@@ -20,13 +20,12 @@ service:
 
 resources:
   limits:
-    cpu: "100m"        # 0.1 cores
-    memory: "64Mi"     # 64 MiB
+    cpu: "500m"                     # Maximum amount of CPU the container can use (500 millicores = 0.5 cores)
+    memory: "256Mi"                 # Maximum memory the container can use (256 MiB)
 
   requests:
-    cpu: "50m"         # 0.05 cores
-    memory: "32Mi"     # 32 MiB
-                
+    cpu: "250m"                     # Minimum amount of CPU requested (used for scheduling)
+    memory: "128Mi"                 # Minimum memory requested (used for scheduling)
 
 
 ingress:
