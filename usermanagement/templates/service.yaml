@@ -18,6 +18,6 @@ spec:
   ports:
     - protocol: TCP                                    # Network protocol (TCP in this case)
       port: {{ .Values.service.port }}                 # Port exposed by the Service
-      targetPort: {{ .Values.service.port }}           # Port on the container the traffic should be forwarded to
+      targetPort: {{ .Values.service.targetPort }}           # Port on the container the traffic should be forwarded to
 
   type: {{ .Values.service.type | default "ClusterIP" }} # Type of Service (e.g., ClusterIP, NodePort, LoadBalancer); defaults to ClusterIP
