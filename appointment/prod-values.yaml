@@ -1,0 +1,35 @@
+# values-dev.yaml
+replicaCount: 1
+
+
+namespace: prod
+
+image:
+  repository: mutuwa12/appointment                 # Docker image repository (in this case, the official Nginx image)
+  tag: v1                       # Image tag/version to use (using 'latest' for dev environment)
+  pullPolicy: IfNotPresent          # Policy for pulling images (Only pulls if not already present on node)
+
+
+service:
+  name: appointment-prod
+  type: LoadBalancer
+  targetPort: 8000
+  port: 80
+
+env: prod
+
+resources:
+  limits:
+    cpu: "100m"        # 0.1 cores
+    memory: "64Mi"     # 64 MiB
+
+  requests:
+    cpu: "50m"         # 0.05 cores
+    memory: "32Mi"     # 32 MiB
+
+
+ingress:
+  enabled: true
+  host: usermanagement-prod.com
+certManager:
+  issuerName: selfsigned

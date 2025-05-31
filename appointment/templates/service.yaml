@@ -1,15 +1,23 @@
-apiVersion: v1
-kind: Service
+apiVersion: v1                                         # API version for defining a Kubernetes Service
+kind: Service                                          # This manifest defines a Service resource
 metadata:
-  name: {{ include "appointment.fullname" . }}
-  labels:
-    {{- include "appointment.labels" . | nindent 4 }}
+  name: {{ include "appointment.fullname" . }}               # The name of the Service, typically includes release name
+  namespace: {{ .Values.namespace }}                   # Namespace where the Service will be created (from values.yaml)
+  labels:                                              # Labels to identify and organize the Service
+    app: {{ include "appointment.name" . }}                  # Label for the app name
+    chart: {{ include "appointment.chart" . }}               # Helm chart label
+    release: {{ .Release.Name }}                       # Helm release name
+    heritage: {{ .Release.Service }}                   # Helm service label
+    environment: {{ .Values.env | quote }}             # Custom label to identify the environment (e.g., dev)
+
 spec:
-  type: {{ .Values.service.type }}
+  selector:                                            # Selector to match Pods the Service should route to
+    app: {{ include "appointment.name" . }}                  # Must match the label on the pods
+    release: {{ .Release.Name }}                       # Must match the label on the pods
+
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
-  selector:
-    {{- include "appointment.selectorLabels" . | nindent 4 }}
+    - protocol: TCP                                    # Network protocol (TCP in this case)
+      port: {{ .Values.service.port }}                 # Port exposed by the Service
+      targetPort: {{ .Values.service.targetPort }}           # Port on the container the traffic should be forwarded to
+
+  type: {{ .Values.service.type | default "ClusterIP" }} # Type of Service (e.g., ClusterIP, NodePort, LoadBalancer); defaults to ClusterIP
