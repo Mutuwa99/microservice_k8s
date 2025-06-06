@@ -2,7 +2,7 @@
 
 namespace: dev                      # The Kubernetes namespace where the resources will be deployed
 
-replicaCount: 1                     # Number of pod replicas to run
+replicaCount: 4                     # Number of pod replicas to run
 
 env: dev                            # Environment label (used for tagging pods, e.g., dev, staging, prod)
 
@@ -16,6 +16,8 @@ service:
   type: LoadBalancer
   targetPort: 8000
   port: 80
+                
+
                 
 
 resources:
